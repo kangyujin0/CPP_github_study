@@ -7,7 +7,7 @@
 
 int main()
 {
-    printf("안녕하세요. C++의 세계에 오신것을 환영합니다!\n\n");
+    printf("안녕하세요. C++의 세계에 오신것을 열렬히 환영합니다!\n\n");
 
     printf("2의 제곱 : %d\n", SQUARE(2));
     printf("5의 제곱 : %d\n", SQUARE(5));
@@ -23,7 +23,7 @@ int main()
     {
         x = x;
     }
-    printf("%d\n", x, ABS(x));
+    
     printf("%d\n", x, ABS(x));
 }
 
