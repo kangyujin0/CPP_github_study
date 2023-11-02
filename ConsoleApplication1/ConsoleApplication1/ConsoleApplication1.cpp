@@ -10,7 +10,6 @@
 //} point2D;
 //double Dist(point2D p1, point2D p2); //바디가 없는 프로토타입의 함수
 
-
 //class point // 필수요소 생성자 
 //{
 //public: // 외부접근가능
@@ -31,6 +30,7 @@
 //    double d = sqrt(w * w + h * h);
 //    return d;
 //}
+
 class point // 필수요소 생성자 
 {
 public: // 외부접근가능
@@ -41,19 +41,14 @@ public: // 외부접근가능
     {
         x = x1; y = y1;
     }
-    int area(point p)
-    {
-        int w = ABS(x - p.x);  //멤버변수를 로컬변수로 사용하다
-        int h = ABS(y - p.y);
-        int a = (w * h);
-        return a;
-    }
-};
-
+    int area(point p);
+    double Dist(int x1, int y1);    
+    double Dist2(point p1, point p2);
+ };
 
 int main()
 {
-    printf("안녕하세요. C++의 세계에 오신것을 열렬히 환영합니다!\n\n");
+    /*printf("안녕하세요. C++의 세계에 오신것을 열렬히 환영합니다!\n\n");
     printf("2의 제곱 : %d\n", SQUARE(2));
     printf("5의 제곱 : %d\n", SQUARE(5));
     printf("1.2의 제곱 : %f\n", SQUARE(1.2));
@@ -69,9 +64,15 @@ int main()
         x = x;
     }
     printf("%d\n", x, ABS(x));
-
+    */
+    
     point p1(10, 10), p2(20, 30);
     
+    double d = p1.Dist2(p1, p2);
+    double e = p1.Dist(20, 30);  
+    printf("두 점 p1(%d,%d), p2(%d,%d)의 거리는 %.2f(%.2f)입니다.\n", p1.x, p1.y, p2.x, p2.y, d, e, p2.area(p1));
+    printf("두 점 p1(%d,%d), p2(%d,%d)의 거리는 %.2f(%.2f)입니다.\n", p1.x, p1.y, p2.x, p2.y, d, e, p2.area(p1));
+
     int a = p1.area(p2); 
     printf("두 점 p1(%d,%d), p2(%d,%d)의 면적은 %d입니다.", p1.x, p1.y, p2.x, p2.y, a);
 
@@ -84,6 +85,29 @@ int main()
     //double d = Dist(p1, p2);  //정구조체를 이용해서 두 점의 길이를 잇는 함수를 만든다면
     //printf("두 점 p1(%d,%d), p2(%d,%d)의 거리는 %.2f입니다.", p1.x, p1.y, p2.x, p2.y, d);
 }
+int point::area(point p)
+{
+    int w = ABS(x - p.x);  //멤버변수를 로컬변수로 사용하다
+    int h = ABS(y - p.y);
+    int a = (w * h);
+    return a;
+}
+double point::Dist(int x1, int y1)
+{
+    int w = (x - x1);
+    int h = (y - y1);
+    double d = sqrt(w * w + h * h);
+    return d;
+}
+
+double point::Dist2(point p1, point p2)
+{
+    int w = (p2.x - p1.x);
+    int h = (p2.y - p1.y);
+    double d = sqrt(w * w + h * h);
+    return d;
+}
+
 //double Dist(point2D p1, point2D p2)  // 두 점간의 거리를 구하는 함수
 //{
 //    int w = ABS(p1.x - p2.x);
